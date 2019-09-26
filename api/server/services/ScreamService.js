@@ -32,23 +32,8 @@ class ScreamService {
     };
   }
 
-  static async getAllScreams(req, res) {
-    const gottenUser = await db.User.findOne({
-      where: { handle: req.handle }
-    });
-
-    if (!gottenUser) {
-      return res.status(404).send({
-        status: 'error',
-        statuscode: 404,
-        error: 'Not found',
-        message: 'Handle is not available on the platform',
-      });
-    }
-
-    const foundScreams = await db.Scream.findAll({
-      attributes: { exclude: 'handle' }
-    });
+  static async getAllScreams() {
+    const foundScreams = await db.Scream.findAll();
     if (foundScreams.length > 0) {
       return {
         status: 'success',
