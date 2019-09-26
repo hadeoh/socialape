@@ -33,7 +33,9 @@ class ScreamService {
   }
 
   static async getAllScreams() {
-    const foundScreams = await db.Scream.findAll();
+    const foundScreams = await db.Scream.findAll({
+      attributes: { exclude: 'image' }
+    });
     if (foundScreams.length > 0) {
       return {
         status: 'success',
