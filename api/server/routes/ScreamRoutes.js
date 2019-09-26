@@ -12,7 +12,7 @@ const { getUser } = Auth;
 const screamRouter = Router();
 
 screamRouter.post('/', getUser, createScreamCheck, createScream);
-screamRouter.get('/', getUser, getAllScreams);
+screamRouter.get('/', getAllScreams);
 screamRouter.get('/:id', getUser, getScream);
 screamRouter.delete('/:id', getUser, deleteScream);
 screamRouter.get('/:screamId/like', getUser, likeScream);
