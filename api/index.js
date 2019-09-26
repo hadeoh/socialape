@@ -1,12 +1,14 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
+import cors from 'cors';
 import userRoutes from './server/routes/UserRoutes';
 import screamRoutes from './server/routes/ScreamRoutes';
 import commentRoutes from './server/routes/CommentRoutes';
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload({
