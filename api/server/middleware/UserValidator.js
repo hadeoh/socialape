@@ -93,28 +93,10 @@ class UserValidation {
     return next();
   }
 
-  static inputCheck(email, firstname, lastname, handle, password) {
+  static inputCheck(email, handle, password) {
     const errors = [];
     let isEmpty;
     let hasWhiteSpace;
-    isEmpty = Helper.checkFieldEmpty(firstname, 'firstname');
-    if (isEmpty) errors.push(isEmpty);
-
-    hasWhiteSpace = Helper.checkFieldWhiteSpace(firstname, 'firstname');
-    if (hasWhiteSpace) errors.push(hasWhiteSpace);
-
-    let isNotAlpha;
-    isNotAlpha = Helper.checkFieldAlpha(firstname, 'firstname');
-    if (isNotAlpha) errors.push(isNotAlpha);
-
-    isEmpty = Helper.checkFieldEmpty(lastname, 'lastname');
-    if (isEmpty) errors.push(isEmpty);
-
-    hasWhiteSpace = Helper.checkFieldWhiteSpace(lastname, 'lastname');
-    if (hasWhiteSpace) errors.push(hasWhiteSpace);
-
-    isNotAlpha = Helper.checkFieldAlpha(lastname, 'lastname');
-    if (isNotAlpha) errors.push(isNotAlpha);
 
     isEmpty = Helper.checkFieldEmpty(handle, 'handle');
     if (isEmpty) errors.push(isEmpty);
