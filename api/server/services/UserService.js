@@ -9,9 +9,7 @@ class UserService {
 
     const user = await db.User.create(newUser);
 
-    const {
-      id, email, handle, lastname, firstname,
-    } = user;
+    const { id, email, handle } = user;
     const payLoad = { id, email, handle }; // when loggin in a user
     const token = Helper.getToken(payLoad);
     return {
@@ -19,8 +17,6 @@ class UserService {
       statuscode: 201,
       data: {
         id,
-        firstname,
-        lastname,
         email,
         handle,
         token,
@@ -46,7 +42,7 @@ class UserService {
     const hash = foundUser.password;
     if (Helper.comparePassword(password, hash) === true) {
       const {
-        id, firstname, lastname, handle
+        id, handle
       } = foundUser;
       const payLoad = {
         id,
@@ -59,8 +55,6 @@ class UserService {
         statuscode: 200,
         data: {
           userId: id,
-          firstname,
-          lastname,
           email,
           handle,
           token

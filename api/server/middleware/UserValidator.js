@@ -4,15 +4,12 @@ import Helper from './Helper';
 class UserValidation {
   static async signUpCheck(req, res, next) {
     let {
-      email, firstname, lastname, password, handle, confirmPassword
+      email, password, handle, confirmPassword
     } = req.body;
 
-    const errors = UserValidation.inputCheck(email, firstname, lastname, handle,
-      password, confirmPassword);
+    const errors = UserValidation.inputCheck(email, handle, password, confirmPassword);
     if (errors.length > 0) return res.status(errors[0].statuscode).send(errors[0]);
 
-    if (firstname) firstname = firstname.trim();
-    if (lastname) lastname = lastname.trim();
     if (email) email = email.trim();
     if (handle) handle = handle.trim();
     if (password) password = password.trim();
@@ -67,8 +64,6 @@ class UserValidation {
       });
     }
 
-    req.body.firstname = firstname;
-    req.body.lastname = lastname;
     req.body.password = password;
     req.body.email = email;
     req.body.handle = handle;
