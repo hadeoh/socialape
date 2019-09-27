@@ -178,7 +178,7 @@ class UserService {
     }
 
     const foundScreams = await db.Scream.findAll({
-      where: { userHandle: req.params.handle }, attributes: { exclude: 'handle' }
+      where: { userHandle: req.params.handle }, attributes: { exclude: 'handle, image' }
     });
     const userHandle = req.params.handle;
 
