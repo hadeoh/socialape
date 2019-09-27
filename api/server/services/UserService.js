@@ -85,7 +85,7 @@ class UserService {
 
     const filename = req.files.image.name;
     const fileObj = req.files.image;
-    fileObj.mv(`${__dirname}/../upload/${filename}`, (err) => {
+    fileObj.mv(`${__dirname}/../../../upload/${filename}`, (err) => {
       if (err) {
         return res.status(500).send({
           statuscode: 500,
