@@ -84,8 +84,11 @@ class UserService {
     }
 
     const filename = req.files.image.name;
+    const ext = filename.split('.').pop();
+    const newName = `${Math.random().toString(36).substr(5)}.${ext}`;
     const fileObj = req.files.image;
-    fileObj.mv(`${__dirname}/../../../upload/${filename}`, (err) => {
+    // eslint-disable-next-line consistent-return
+    fileObj.mv(`${__dirname}/../../upload/${newName}`, (err) => {
       if (err) {
         return res.status(500).send({
           statuscode: 500,
@@ -95,7 +98,7 @@ class UserService {
       }
     });
     await db.User.update(
-      { image: filename },
+      { image: newName },
       { where: { handle: req.handle } }
     );
     return {

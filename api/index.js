@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
+import path from 'path';
 import userRoutes from './server/routes/UserRoutes';
 import screamRoutes from './server/routes/ScreamRoutes';
 import commentRoutes from './server/routes/CommentRoutes';
@@ -28,6 +29,7 @@ app.get('/', (req, res) => res.status(200).send({
 app.use('/api/v1/auth', userRoutes);
 app.use('/api/v1/screams', screamRoutes);
 app.use('/api/v1/scream', commentRoutes);
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 app.use((req, res, next) => {
   const error = new Error('Route Does not Exist');
