@@ -35,7 +35,7 @@ class UserService {
       return {
         status: 'error',
         statuscode: 401,
-        error: 'This email is not registered here'
+        message: 'This email is not registered here'
       };
     }
 
@@ -65,7 +65,7 @@ class UserService {
     return {
       status: 'error',
       statuscode: 401,
-      error: 'Authentication failed, invalid login details'
+      message: 'Authentication failed, invalid login details'
     };
   }
 
@@ -93,7 +93,7 @@ class UserService {
         return res.status(500).send({
           statuscode: 500,
           status: 'error',
-          error: err
+          message: err
         });
       }
     });

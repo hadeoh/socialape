@@ -19,7 +19,7 @@ app.use(fileUpload({
   },
 }));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 // when a random route is inputed
 app.get('/', (req, res) => res.status(200).send({
   statusCode: 200,
